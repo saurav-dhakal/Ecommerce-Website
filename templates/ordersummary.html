@@ -1,0 +1,47 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Order Summary{% endblock title %}
+
+{% block body %}
+
+
+  
+<div class="border"></div>
+
+<div class="section " style=" font-size: large; font-weight: 200;  margin-left:75px;margin-right:75px; padding-top: 10px; padding-left: 10px; padding-right: 10px;">
+ <!--    for order summary -->
+    <h2 style="text-align:center;">Order Summary</h2>
+    <h3 >{{product.product_name}}</h3>
+    
+    <span class="left">Price Per piece</span>
+    <span class="right">Rs.{{product.price}}</span><br>
+    <span class="left">Quantity</span>
+    <span class="right">{{quantity}}</span><br>
+    <span class="left">Color</span>
+    <span class="right">{{color}}</span><br>
+    <span class="left">Production charges</span>
+    <span class="right">Rs.{{design_price}}</span><br>
+    <span class="left">Delivery Charge</span>
+    <span class="right">Rs.99</span><br><br>
+    <u><span class="left">TOTAL</span></u>
+    <span class="right">Rs.{{tprice}}</span>
+
+</div>
+<div class="border"></div>
+<div class="section" style="text-align:center; font-style: italic; font-weight: 800; background-color: rgba(131, 163, 141, 0.316);; margin-left:75px;margin-right:75px; padding-top: 10px;
+">
+   <h5 >Your Order is Sucessfully Created</h5>
+   <h5>We will Contact you soon</h5>
+   <h5>Have a good time!!!</h5>
+   <a class="btn btn-secondary" href="{% url 'home' %}" role="button"
+   style="margin-top:20px ; margin-bottom:15px ; ">VIEW <br> POPULAR PRODUCTS</a>
+   <h5 style="color:red;">For tracking your order , timely and elective delivery please send us "my order status" in the messenger chat pop-up below</h5>
+<!--     <label >Additional Information</label><br>
+   <textarea class="textarea" name="addinfo" id="addinfo"placeholder="Any additional information or queries if required"></textarea>
+    <br> -->
+   
+ </div>
+
+
+{% endblock body %}

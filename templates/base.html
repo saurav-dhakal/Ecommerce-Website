@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+
+
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="shortcut icon" type="image" href="/static/image/ws_logo.png">
+    
+  </head>
+  <body>
+    
+    <div class="directcontact" style="text-align:right; padding-top:10px; padding-right: 15px; margin-bottom: 0px;margin-top: 0px;">
+    <a href="tel:+9779819060344"  >Direct Contact:+977-9819060344</a>
+</div> 
+        <div class="im">
+          {% load static %}
+            <img src="{% static 'image/Logo.png' %}" class="logo" style="margin-top:0px;margin-bottom:0px;">
+        </div>
+    <nav id="navbar">
+        
+
+        <ul id="menu">
+           <a  href="{% url 'home' %}"> <li>HOME</li></a>
+           <a  href="{% url 'aboutus' %}"> <li>ABOUT US</li></a>
+           <a  href="{% url 'contact' %}"> <li>CONTACT</li></a>
+            
+        </ul>
+    </nav>
+    
+    {% block body %}{% endblock body %}
+    
+
+
+<!--     js for sticky navbar -->
+
+   <script>
+    var navbar=document.getElementById("navbar");
+    var menu=document.getElementById("menu");
+
+    window.onscroll = function(){
+        if(window.pageYOffset >= menu.offsetTop){
+            navbar.classList.add("sticky");
+            
+        }
+        else{
+            navbar.classList.remove("sticky");
+
+        }
+    }
+
+
+
+   </script>
+
+<!--    js for onclick event -->
+
+   <script>
+    var ProductImg= document.getElementById("ProductImg");
+    var SmallImg = document.getElementsByClassName("small-img")
+
+    SmallImg[0].onclick = function()
+    {
+        ProductImg.src = SmallImg[0].src;
+
+    }
+    SmallImg[1].onclick = function()
+    {
+        ProductImg.src = SmallImg[1].src;
+        
+    }
+    SmallImg[2].onclick = function()
+    {
+        ProductImg.src = SmallImg[2].src;
+        
+    }
+    SmallImg[3].onclick = function()
+    {
+        ProductImg.src = SmallImg[3].src;
+        
+    }
+
+   </script>
+<div><!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "102865857733810");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v15.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+</div>
+
+{% include 'footer.html' %}
+
+  </body>
+
+</html>

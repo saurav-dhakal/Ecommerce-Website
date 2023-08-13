@@ -1,0 +1,75 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Product page{% endblock title %}
+
+{% block body %}
+<h2 style="text-align:center;padding-top:10px;"> {{product.0.product_cat}}</h2>
+<div class="container">
+    
+
+    {% if product.0.product_cat == 'FOLDER'  %}
+
+
+    {% for i in product %}
+         
+    {% if i.stock > 0 %}
+ 
+    <div class="card">
+        <div class="imgbox" >
+            
+            <a href="{% url 'orderform' i.product_id %}"><img src="/media/{{i.main_image}}">
+                </a>
+     
+        </div>
+        <div class="content">
+            <div class="productName">
+                <span> {{i.product_name}}</span><br>
+  
+     
+                <span style="font-size: 19;color: orangered;">Rs.{{i.price}}</span>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+    {% endif %}
+  {% endfor %}
+
+
+  {% else %}
+
+{% endif %}
+
+
+</div>
+<h2 style="padding-left:10px;text-align:center;padding-top:10px;">Watch Product on Video</h2>
+<iframe  style="padding-left:10px; padding-right:10px; " width="100%" height="415" src="https://www.youtube.com/embed/vziiLvP2MlY " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share " ></iframe>
+
+
+{% endblock body %}
+
+    
+
+   <script>
+    var navbar=document.getElementById("navbar");
+    var menu=document.getElementById("menu");
+
+    window.onscroll = function(){
+        if(window.pageYOffset >= menu.offsetTop){
+            navbar.classList.add("sticky")
+            
+        }
+        else{
+            navbar.classList.remove("sticky")
+
+        }
+    }
+
+
+
+   </script>
+  </body>
+</html>

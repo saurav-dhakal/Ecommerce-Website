@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block title %}Order Form{% endblock title %}
+
+{% block body %}
+<section class="small-container">
+
+    <div class="row ">
+        <div class="col">
+
+   
+
+            <img src="/media/{{product.main_image}}" width="100%" id="ProductImg">
+        <div class="small-img-row">
+          <div class="small-img-col">
+            <img src="/media/{{product.main_image}}" width="100%" alt="" class="small-img">
+        
+
+         </div>
+            <div class="small-img-col">
+                <img src="/media/{{product.back_image}}" width="100%" alt="" class="small-img">
+                        </div>
+            
+            <div class="small-img-col">
+                <img src="/media/{{product.inner_image}}" width="100%" alt="" class="small-img">
+            
+            </div>
+            <div class="small-img-col">
+                <img src="/static/image/B4.jpg" width="100%" alt="" class="small-img">
+                
+
+            </div>
+         </div>
+         <h4 style='margin-top:40px;'>Product Details of {{product.product_name}}</h4>
+         <ul>
+          <li>{{product.pd1}}</li>
+          <li>{{product.pd2}}</li>
+          <li>{{product.pd3}}</li>
+          <li>{{product.pd4}}</li>
+          <li>{{product.pd5}}</li>
+        </ul>
+        </div>
+        
+       <div class="col">
+       
+        <form class="details-form" method="POST" action="{% url 'orderfolder' id %}" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            <h3 style="margin-top: 0px;">Order Details</h3>
+        <label for="size" style="margin-top:5px;">Size :    </label>
+        <select name="size" id="size">
+            <option value="B4 size">Transcript size(B4)</option>
+            {% comment %} <option value="A4 size">A4 size</option> {% endcomment %}
+            
+            
+          </select>
+  <br>
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" name="quantity" onchange="changeprice(this.form)" value="1"><br>
+          <label for="addinfo">Add Info:</label>
+              <textarea  class="textarea" name="addinfo" id="addinfo" placeholder="Mention additional information "></textarea>
+              <p id="addnote" style="color: orangered;">Note:please mention any addition information of your requirements.<br>
+              </p>
+      <h3 style="margin-top: 20px;">Personal Details</h3>
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" required><br>
+      <label for="cnum"  >Contact Number:</label>
+      <input type="tel" name="contact" required><br>
+      <label for="location" >Location:</label>
+      <textarea class="textarea" required name="location" id="location"   placeholder="Enter full location"></textarea><br>
+      <div class="formgap" style="background-color:black ; height:2px; margin-left:60px; margin-right:60px; margin-top:20px;margin-bottom:21px;"></div>
+
+      <h2 id="tprice" style="margin-bottom:0px ;"class="Next1">Rs.{{price}}</h2>
+       <span style="padding-left: 0px ;">Inclusive Of all taxes (Rs.{{price}}/piece)</span>
+     
+      <button class="Order Next1" type="submit" value="submit">Next</button>
+      <input type="hidden" id="price" value="{{price}}">
+      
+
+        </form>   
+      </div> 
+     </div>
+     
+
+     
+
+     {% comment %} <h2>Comments</h2>
+
+
+     <form class="details-form" method="POST" action="{% url 'orderfolder' id %}" enctype="multipart/form-data">
+        <textarea name='comment'  id='comment' required style='height:50px;'>Your review</textarea>
+        <button class="comment" type="submit" value="submit">Comment</button>
+     </form> {% endcomment %}
+</section>
+
+
+{% comment %} </div>
+
+  </div> {% endcomment %}
+
+<div class="faq">
+    <h2><u>FAQ's</u></h2><br>
+    <span>1.What is the actual dimension of this Document Folder?<br>
+        Ans: length: 16inch/ 40cm & breadth: 11inch/ 28cm.<br><br>
+        2.Is this product Waterproof?<br>
+        Ans: Yes,the Product is waterproof.<br><br>
+        3. What will hapen if the product is defective?<br>
+        Ans: We take utmost care to ensure that the products you receive are of the highest quality. In the rare event that you receive a defective or damaged product, please contact our Customer Support within 48 hours of receiving the item. We will arrange for the return of the product and offer you a replacement.<br><br>
+
+        4. Is Cash On Delivery(COD) available?<br>
+        Ans: We understand the convenience of Cash on Delivery (COD) for our customers within Kathmandu Valley. You can choose the COD option during the checkout process. Please ensure that you have the exact cash amount ready at the time of delivery.<br><br>
+
+        5. Do this product be delivered all over Nepal?<br>
+        Ans: Yes, this product is delivered all over Nepal. <br><br>
+        6. How long will it take to deliver the product?<br>
+        Ans:Estimated delivery time is same day or next day within kathmandu valley and 1-3 days outside kathmandu valley. <br><br>
+        7. How can I return the product if I'm not satisfied?<br>
+        Ans: If you wish to return a product for any reason please contact our Customer Support within 48 hours of receiving the item. We will provide you with instructions on how to return the product. Return shipping costs will be borne by the customer.
+        <br><br>
+        
+
+    </span>
+</div>
+
+
+  <script>
+    function changeprice ( form ) 
+    {   ans ='Rs.'+ (form.price.value * form.quantity.value);
+        document.getElementById("tprice").innerHTML =ans;
+      
+      }
+</script>
+ {% endblock body %}
+

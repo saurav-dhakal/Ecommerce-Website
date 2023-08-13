@@ -1,0 +1,64 @@
+
+<script>
+    var navbar=document.getElementById("navbar");
+    var menu=document.getElementById("menu");
+
+    window.onscroll = function(){
+        if(window.pageYOffset >= menu.offsetTop){
+            navbar.classList.add("sticky")
+            
+        }
+        else{
+            navbar.classList.remove("sticky")
+
+        }
+    }
+
+
+
+   </script>
+
+<div class="footer">
+
+    <div class="footercompany">
+        <strong>Company</strong>
+        <div class="listgroup">
+            <a href="{% url 'aboutus' %}">About Us</a><br>
+            <a href="{% url 'contact' %}">Contact</a>
+        </div>
+
+    </div>
+    <div class="footerimplinks">
+        <strong>Important Links</strong>
+        <div class="listgroup">
+        <a href="{% url 'privacypolicy' %}">Privacy Policy</a><br>
+        <a href="{% url 'deliverypolicy' %}">Delivery & Return Policy</a><br>
+        <a href="#">Terms & Conditions</a>
+    </div> 
+    </div>
+    <div class="contactus">
+        <strong>Contact Us</strong>
+        <div class="listgroup">
+        
+            <a href="tel:+977919060344"><i class="fa-solid fa-phone"></i>:+977-9819060344</a><br>
+            <a href="tel:+9779800909096" style="margin-left: 21px;">+977-9800909096</a><br>
+              
+           <a href="mailto:MSPofficial.com" style="font-size: 14px;"><i class="fa-solid fa-envelope"></i> :MSPofficial.com</a></li>
+
+        </div>
+    </div>
+</div>
+<div class="socialtext">
+    <strong>Connect With Us via</strong>
+</div>
+<div class="social">
+    
+
+        <a href="https://www.facebook.com/MSPi"><i class="fa-brands fa-3x fa-facebook"></i></a>
+        <a href=""><i class="fa-brands fa-3x fa-instagram"></i></a>
+    </div>
+</div>
+
+<div class="lastfooter">
+    <span>©2023 MSP Nepal Pvt. Ltd.. All Rights Reserved.</span>
+</div>
